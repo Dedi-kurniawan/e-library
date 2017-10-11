@@ -16,17 +16,19 @@
                             <span>e-Book</span>
                         </a>
                         <ul class="ml-menu">
-                         @foreach($kategori as $fa)
+                         @foreach($menuFakultas as $fa)
                             <li>
                                 <a href="#" class="menu-toggle">
-                                    <span>{{ $fa->faculty->jurusan }}</span>
+                                    <span>{{ $fa->jurusan }}</span>
                                 </a>
                               <ul class="ml-menu">
+                                   @foreach( $fa->categories as $ka )
                                     <li>
                                         <a href="{{ route ('ebook.edit',$fa->id) }}">
-                                            <span>{{ $fa->kategory }}</span>
+                                            <span>{{ $ka->kategory }}</span>
                                         </a>
                                     </li>
+                                    @endforeach 
                                 </ul>
                             </li> 
                          @endforeach                            
@@ -106,7 +108,7 @@
 
                     
                     {{-- Hanya Admin --}}
-                   @role('admin')
+                   @role('Admin')
                      <li class="header">PENGATURAN</li>
                      <li>
                         <a href="javascript:void(0);" class="menu-toggle">

@@ -13,7 +13,7 @@ class Faculty extends Model
     	return $this->hasMany('App\Profile');
     }
 
-     public function category()
+     public function categories()
     {
     	return $this->hasMany('App\Category');
     }

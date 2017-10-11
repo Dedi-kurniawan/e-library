@@ -44,10 +44,12 @@ class HomeController extends Controller
         $ebookPremium = Book::where('type', 1)->where('status', 2);
         $ebookTotalPremium = $ebookPremium->count();
 
-        $kategori = Category::all();
-        $faculty  = Faculty::all();
-        $book  = Book::all();
+        // $kategori = Category::all();
+        // $faculty  = Faculty::all();
+        // $book  = Book::all();
 
-        return view('home', compact('kategori', 'faculty', 'book', 'ebookTotal', 'videoTotal', 'anggotaTotal', 'ebookTotalPremium'));
+        $book = Book::all();
+        $menuFakultas = Faculty::with('categories')->get();
+        return view('home', compact('menuFakultas', 'book', 'ebookTotal', 'videoTotal', 'anggotaTotal', 'ebookTotalPremium'));
     }
 }
