@@ -28,10 +28,6 @@ class HomeController extends Controller
     public function index()
     {    
 
-
-
-
-
         $ebook = Book::where('type', 1);
         $ebookTotal = $ebook->count();
 
@@ -49,7 +45,7 @@ class HomeController extends Controller
         // $book  = Book::all();
 
         $book = Book::all();
-        $menuFakultas = Faculty::with('categories')->get();
-        return view('home', compact('menuFakultas', 'book', 'ebookTotal', 'videoTotal', 'anggotaTotal', 'ebookTotalPremium'));
+        //$menuFakultas = Faculty::with('categories')->get();
+        return view('home', compact('book', 'ebookTotal', 'videoTotal', 'anggotaTotal', 'ebookTotalPremium'));
     }
 }
