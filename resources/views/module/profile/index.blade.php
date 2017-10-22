@@ -22,7 +22,7 @@
                                         <i class="material-icons">add</i>
                                     </a>
                                     <ul class="dropdown-menu pull-right">
-                                        <li><a href=" {{ route('profile.create') }} ">Tambah</a></li>
+                                        <li> <a href="">Tambah</a></li>
                                     </ul>
                                 </li>
                             </ul>

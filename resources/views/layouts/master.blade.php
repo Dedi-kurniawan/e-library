@@ -18,7 +18,8 @@
 
     <!-- Waves Effect Css -->
     <link href=" {{ asset ('AdminBSB/plugins/node-waves/waves.css') }}" rel="stylesheet" />
-
+    <link href="{{ asset ('AdminBSB/plugins/node-waves/waves.css') }}" rel="stylesheet" />
+    <link href="{{ asset ('AdminBSB/plugins/sweetalert/sweetalert.css') }}" rel="stylesheet" />
     <!-- Animation Css -->
     <link href=" {{ asset ('AdminBSB/plugins/animate-css/animate.css') }}" rel="stylesheet" />
     <link href="{{ asset ('AdminBSB/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
@@ -34,6 +35,7 @@
     <link href="{{ asset ('AdminBSB/css/themes/all-themes.css') }}" rel="stylesheet" />
     <!-- Light Gallery Plugin Css -->
     <link href="{{ asset ('AdminBSB/plugins/light-gallery/css/lightgallery.css') }}" rel="stylesheet">
+
 </head>
 
 <body class="theme-red">
@@ -225,25 +227,21 @@
     </section>
 @yield('maincontent')
     
-    <!-- Jquery Core Js -->
     <script src=" {{ asset ('AdminBSB/plugins/jquery/jquery.min.js') }}"></script>
-
-    <!-- Bootstrap Core Js -->
     <script src=" {{ asset ('AdminBSB/plugins/bootstrap/js/bootstrap.js') }}"></script>
-
     <script src=" {{ asset ('AdminBSB/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
     <script src=" {{ asset ('AdminBSB/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
     <script src=" {{ asset ('AdminBSB/plugins/node-waves/waves.js') }}"></script>
     <script src=" {{ asset ('AdminBSB/plugins/jquery-countto/jquery.countTo.js') }}"></script>
-    <script src=" {{ asset ('AdminBSB/plugins/raphael/raphael.min.js') }}"></script>
+{{--     <script src=" {{ asset ('AdminBSB/plugins/raphael/raphael.min.js') }}"></script>
     <script src=" {{ asset ('AdminBSB/plugins/morrisjs/morris.js') }}"></script>
-    <script src=" {{ asset ('AdminBSB/plugins/chartjs/Chart.bundle.js') }}"></script>
-    <script src=" {{ asset ('AdminBSB/plugins/flot-charts/jquery.flot.js') }}"></script>
+    <script src=" {{ asset ('AdminBSB/plugins/chartjs/Chart.bundle.js') }}"></script> --}}
+{{--     <script src=" {{ asset ('AdminBSB/plugins/flot-charts/jquery.flot.js') }}"></script>
     <script src=" {{ asset ('AdminBSB/plugins/flot-charts/jquery.flot.resize.js') }}"></script>
     <script src=" {{ asset ('AdminBSB/plugins/flot-charts/jquery.flot.pie.js') }}"></script>
     <script src=" {{ asset ('AdminBSB/plugins/flot-charts/jquery.flot.categories.js') }}"></script>
-    <script src=" {{ asset ('AdminBSB/plugins/flot-charts/jquery.flot.time.js') }}"></script>
-    <script src=" {{ asset ('AdminBSB/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
+    <script src=" {{ asset ('AdminBSB/plugins/flot-charts/jquery.flot.time.js') }}"></script> --}}
+   {{--  <script src=" {{ asset ('AdminBSB/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script> --}}
      <script src="{{ asset ('AdminBSB/plugins/jquery-datatable/jquery.dataTables.js') }}"></script>
     <script src="{{ asset ('AdminBSB/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset ('AdminBSB/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js') }}"></script>
@@ -254,18 +252,24 @@
     <script src="{{ asset ('AdminBSB/plugins/jquery-datatable/extensions/export/buttons.html5.min.js') }}"></script>
     <script src="{{ asset ('AdminBSB/plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
     <script src="{{ asset ('AdminBSB/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
-     <script src="{{ asset ('AdminBSB/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
-         <!-- Light Gallery Plugin Js -->
+   {{--  <script src="{{ asset ('AdminBSB/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script> --}}
     <script src="{{ asset ('AdminBSB/plugins/light-gallery/js/lightgallery-all.js') }}"></script>
-
-    <!-- Custom Js -->
+    <script src="{{ asset ('AdminBSB/plugins/jquery-steps/jquery.steps.js') }}"></script>
     <script src="{{ asset ('AdminBSB/js/pages/medias/image-gallery.js') }}"></script>
-    <!-- Custom Js -->
-  
+    <script src="{{ asset ('AdminBSB/js/pages/forms/form-wizard.js') }}"></script>
     <script src="{{ asset ('AdminBSB/js/pages/tables/jquery-datatable.js') }}"></script>
-    <script src=" {{ asset ('AdminBSB/js/admin.js') }}"></script>
-    <script src=" {{ asset ('AdminBSB/js/pages/index.js') }}"></script>
-    <script src=" {{ asset ('AdminBSB/js/demo.js') }}"></script>
+    <script src="{{ asset ('AdminBSB/js/admin.js') }}"></script>
+    <script src="{{ asset ('AdminBSB/js/pages/index.js') }}"></script>
+    <script src="{{ asset ('AdminBSB/js/demo.js') }}"></script>
+    <script src="{{ asset ('AdminBSB/plugins/jquery-validation/jquery.validate.js') }}"></script>
+    <script src="{{ asset ('AdminBSB/plugins/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset ('AdminBSB/js/pages/forms/basic-form-elements.js') }}"></script>
 </body>
 
 </html>
+
+
+
+
+
+

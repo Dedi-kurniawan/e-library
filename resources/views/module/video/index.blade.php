@@ -1,25 +1,27 @@
 @extends('layouts.master')
 @section('maincontent')
 
-
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-            
- <h2> @foreach($video as $vi) {{ $vi->faculty->jurusan }} / {{ $vi->category->kategori }} @endforeach
+
+ <h2> @foreach($kategory as $eb)   {{ $eb->category->faculty->jurusan }} / {{ $eb->category->kategory }} @endforeach
                 </h2>
             </div>
          <hr>
 
 
-          
+ {{--  @if($kategory == null)
+            <center><h2>DATA TIDAK ADA</h2></center> 
+            @else --}}
          <!-- menu buku-->
+
             <div class="row clearfix">
-            @foreach($viook as $vi)
+            @foreach($kategory as $eb)      
                 <div class="col-lg-4 col-md-4 col-sm-3 col-xs-10">
                     <div class="card">
                         <div class="header bg-blue">
-                            <h2>{{ $vi->judul }}<small> {{ $vi->deskripsi }} </small></h2>
+                            <h2>{{ $eb->judul }}<small> {{ $eb->deskripsi }} </small></h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -34,19 +36,17 @@
                             </ul>
                         </div>
             <div class="body">
-            <a href=" {{ route ('video.show',$vi->id) }}">
-                <img alt="300x200" src="{{ $vi->CoverPath }}" style="border: 0.5px solid #ddd;
+                <a href=" {{route('video.show', $eb->id)}}">
+                <img alt="300x200" src="{{ $eb->CoverPath }}" style="border: 0.5px solid #ddd;
                    border-radius: 5px;
                    padding: 5px;
-                   width: 100%;"> </a> 
-
+                   width: 100%;"> </a>            
          <center><div class="header"> 
                    <div class="flex">
                     <ul class="list-inline count2">
-                        <li><center><h3><i class="material-icons">collections_bookmark</i></h3>
-                            <span>e-Book</span></center>
+                        <li>{!! $eb->TypeColl !!}
                         </li> 
-                        <li><center><h3>{{ $vi->faculty->kode_jurusan }}</h3>
+                        <li><center><h3>{{ $eb->category->faculty->kode_jurusan }}</h3>
                             <span>Jurusan</span></center>
                         </li> 
                         <li><center><h3><i class="material-icons">file_download</i></h3>
@@ -54,17 +54,15 @@
                         </li>  
                     </ul> 
                     </div></center>
-                         <h5><strong> @Publisher </strong></h5>
-                            <span> {{ $vi->publisher }}</span> 
+                         <h5> @Publisher &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUpload</h5>
+                            <span> {{ $eb->user->name}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{ $eb->created_at }}</span> 
+
              </div>
         </div>
      </div>
+     </center>     
      @endforeach
+{{-- @endif --}}
 
-                <!-- #END# Browser Usage -->
-            </div>
-        </div>
-    </section> 
-
-
+    
 @endsection

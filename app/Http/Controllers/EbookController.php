@@ -4,60 +4,44 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
-
-use App\Faculty;
 use App\Category;
 use App\Book;
+use App\User;
+
 
 class EbookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
-    {
-        
-        $faculty    = Faculty::all();
-        $kategori   = Category::all();
-        $ebook      = Book::where('type', 1);
-        return view('module.ebook.index', compact('kategori', 'faculty', 'ebook'));
+    {    
+
+        $ebook = Book::where('type', 1);
+        $ebookTotal = $ebook->count();
+
+        $video = Book::where('type', 2);
+        $videoTotal = $video->count();
+
+        $anggota = User::all();
+        $anggotaTotal = $anggota->count();
+
+        $ebookPremium = Book::where('type', 1)->where('status', 2);
+        $ebookTotalPremium = $ebookPremium->count();
+
+        $books = Book::orderBy('created_at', 'desc')->paginate(6);
+        //$menuFakultas = Faculty::with('categories')->get();
+        return view('home', compact('books', 'ebookTotal', 'videoTotal', 'anggotaTotal', 'ebookTotalPremium'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $faculty = Faculty::all();
-        $kategori = Category::all();
+
         $ebook = Book::find($id);
-        return view('module.ebook.reader', compact('kategori', 'faculty', 'ebook'));
+        return view('module.ebook.reader', compact('ebook'));
     }
 
     /**
@@ -66,38 +50,12 @@ class EbookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function kategory($id)
     {
-        $faculty = Faculty::all();
-        $kategori = Category::all();
-
-        $status = Book::where('status', 1);
-        $type   = Book::where('type', 1);
-
-        $ebook = Category::find($id)->books;
-        return view('module.ebook.index', compact('faculty', 'ebook', 'kategori', 'status', 'type'));
+        $kategory = Category::find($id)->books->where('status', 1);
+        
+        return view('module.ebook.index', compact('kategory'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

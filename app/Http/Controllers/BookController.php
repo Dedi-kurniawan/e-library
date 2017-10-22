@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
-use App\Faculty;
 use App\Book;
 use App\User;
 use File;
@@ -21,16 +20,16 @@ class BookController extends Controller
 
      public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('role:Admin');
+        // $this->middleware('role:Dosen');
     }
 
     public function index()
     { 
         $user       = User::all();
-        $faculty    = Faculty::all();
         $kategori   = Category::all();
         $book       = Book::all(); 
-        return view('module.book.index', compact('kategori', 'faculty', 'book','user'));
+        return view('module.book.index', compact('kategori',  'book','user'));
     }
 
     /**
@@ -41,9 +40,8 @@ class BookController extends Controller
     public function create()
     {
         $user       = User::all();
-        $Faculty    = Faculty::all();
         $kategori   = Category::all();
-        return View('module.book.create', compact('kategori', 'faculty', 'user'));
+        return View('module.book.create', compact('kategori','user'));
     }
 
     /**
@@ -130,10 +128,9 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $faculty = Faculty::all();
         $kategori = Category::all();
         $book = Book::find($id); 
-        return view('module.book.show', compact('kategori', 'faculty', 'book'));
+        return view('module.book.show', compact('kategori', 'book'));
     }
 
     /**

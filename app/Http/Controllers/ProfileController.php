@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Faculty;
-use App\Category;
 use App\Profile;
 
 class ProfileController extends Controller
@@ -15,13 +14,31 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    public function register()
+    {
+        if (!Auth::user()->profile)  
+        {
+            return redirect(route('profile.create'));
+        }
+        else
+        {
+            return view('home');
+        }
+
+    }
+
+
     public function index()
     {
         $user       = User::all();
-        $faculty    = Faculty::all();
-        $kategori   = Category::all();
         $profile    = Profile::all();
-        return view('module.profile.index', compact('kategori', 'faculty', 'user', 'profile'));
+        return view('module.profile.index', compact('user', 'profile'));
     }
 
     /**
@@ -31,11 +48,8 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        $user       = User::all();
-        $faculty    = Faculty::all();
-        $kategori   = Category::all();
-        $profile    = Profile::all();
-       return view('module.profile.create', compact('profile', 'faculty','user', 'category'));
+  
+       return view('module.profile.create');
     }
 
     /**
@@ -57,7 +71,9 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+      
+      $profile = Faculty::find($id);
+      return view('module.profile.show', compact('profile'));
     }
 
     /**

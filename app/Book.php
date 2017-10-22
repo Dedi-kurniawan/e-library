@@ -3,10 +3,24 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Nicolaslopezj\Searchable\SearchableTrait;
+
 
 class Book extends Model
 {
-      protected $fillable = ['user_id','category_id','kode','judul','deskripsi','cover','author','','type','file','type','status'];
+     use SearchableTrait;
+
+     
+     protected $searchable = [
+        'columns' => [
+            'books.kode' => 10,
+            'books.judul' => 5,
+
+        ]
+    ];
+
+
+     protected $fillable = ['user_id','category_id','kode','judul','deskripsi','cover','author','','type','file','type','status'];
 
 
      public function category()
@@ -35,6 +49,7 @@ class Book extends Model
             return 'Jenis Tidak Tersedia';
         }
     }
+
      public function getCoverPathAttribute()
     {
         if ($this->cover !== NULL) 
@@ -43,5 +58,10 @@ class Book extends Model
         } else {
             return url('/img/book/noimage.png');
         }
+    }
+
+    public function getCreatedAtAttribute()
+    {
+            return \Carbon\Carbon::parse($this->attributes['created_at'])->format('d-m-Y');
     }
 }

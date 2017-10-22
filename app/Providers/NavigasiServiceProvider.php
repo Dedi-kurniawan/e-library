@@ -17,6 +17,7 @@ class NavigasiServiceProvider extends ServiceProvider
     {
         //
         view()->composer('layouts.sidemenu', SidemenuComposer::class);
+        // view()->composer('module.ebook.index', SidemenuComposer::class);
     }
 
     /**

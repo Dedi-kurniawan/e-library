@@ -10,8 +10,7 @@
             </div>
 
 
- <!-- #END# Tabs With Only Icon Title -->
-            <!-- Tabs With Icon Title -->
+
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -63,7 +62,7 @@
                                         {{ $ebook->deskripsi }}
                                         <hr>
                                         @Author : {{ $ebook->author }} <br>
-                                        @Publisher : {{ $ebook->publisher }}
+                                        @Publisher : {{ $ebook->user->name }}
                                     </p>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="messages_with_icon_title">
@@ -78,8 +77,6 @@
                     </div>
                 </div>
             </div>
-            <!-- #END# Tabs With Icon Title -->
-            <!-- Tabs 
-
+            
 
 @endsection

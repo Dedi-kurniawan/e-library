@@ -1,13 +1,14 @@
     <!-- Search Bar -->
+    <form method="GET" action="{{ url('search') }}">
     <div class="search-bar">
         <div class="search-icon">
             <i class="material-icons">search</i>
         </div>
-        <input type="text" placeholder="START TYPING...">
+        <input type="text" value="{{ old('search') }}" name="search" placeholder="Search Judul atau Kode ...">
         <div class="close-search">
             <i class="material-icons">close</i>
         </div>
-    </div>
+    </div></form>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
@@ -15,12 +16,12 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-               <img src="{{ asset('img/logo.png') }}" style="
+              {{--  <img src="{{ asset('img/logo.png') }}" style="
                    /*border-radius: 5px;
                    padding: 5px;*/
                    width: 115px;
                    height: 50%;
-                   box-shadow: -7px -7px -8px #818181;"> 
+                   box-shadow: -7px -7px -8px #818181;">  --}}<h3 style="color: #ffffff"> ROOM STUDY ONLINE STT DUMAI</h3>
             </div>
             </center> 
             <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -231,11 +232,11 @@
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->name }}</div>
-                    <div class="email">john.doe@example.com</div>
+                    <div class="email">{{ Auth::user()->email }}</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                            <li><a href="{{ route('profile.show', Auth::user()->name) }}"><i class="material-icons">person</i>Profile</a></li>
                             <li role="seperator" class="divider"></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>

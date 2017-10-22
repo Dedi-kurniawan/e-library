@@ -6179,12 +6179,12 @@ fieldset[disabled] .form-control {
     background-color: rgba(0, 150, 136, 0.5); }
 
 .wizard .steps .error a {
-  background-color: #F44336 !important; }
+  background-color:  #f4443b; !important; }
 
 .wizard .steps .current a {
-  background-color: #009688; }
+  background-color: #f4443b; }
   .wizard .steps .current a:active, .wizard .steps .current a:focus, .wizard .steps .current a:hover {
-    background-color: #009688; }
+    background-color: #f4443b; }
 
 /* Waves ======================================= */
 .waves-effect.waves-red .waves-ripple {

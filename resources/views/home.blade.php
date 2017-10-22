@@ -63,10 +63,10 @@
                 <HR WIDTH=100% color="blue" size="4" >
             </center>
             </div>
-        
+
          <!-- menu buku-->
             <div class="row clearfix">
-            @foreach($book as $eb)
+            @foreach($books as $eb)
                 <div class="col-lg-4 col-md-4 col-sm-3 col-xs-10">
                     <div class="card">
                         <div class="header bg-blue">
@@ -88,19 +88,19 @@
                         </div>
             <div class="body">
             @if ($eb->type == 1) 
-                <a href=" {{ route ('ebook.show',$eb->id) }}">
+                <a href=" {{url('/reader', $eb->id)}}">
                 <img alt="300x200" src="{{ $eb->CoverPath }}" style="border: 0.5px solid #ddd;
                    border-radius: 5px;
                    padding: 5px;
                    width: 100%;"> </a>
             @else
-                <a href="#">
+                <a href="{{ route ('video.show', $eb->id)}}">
                 <img alt="300x200" src="{{ $eb->CoverPath }}" style="border: 0.5px solid #ddd;
                    border-radius: 5px;
                    padding: 5px;
                    width: 100%;"> </a>
             @endif
-                <center><div class="header"> 
+        <center><div class="header"> 
                    <div class="flex">
                     <ul class="list-inline count2">
                         <li>{!! $eb->TypeColl !!}
@@ -112,104 +112,29 @@
                             <span>Dowload</span></center>
                         </li>  
                     </ul> 
-                    </div></center>
-                         <h5><strong> @Publisher </strong></h5>
-                            <span>{{ $eb->user_id }}</span> 
+                  </div>
+        </center>
+        <center>
+                  <div class="flex">
+                     <ul class="list-inline count2">
+                        <li><h6><strong> @Publisher </strong></h6> 
+                            <span>{{ $eb->user->name }}</span> 
+                        </li>
+                        <li><h6><strong> Status </strong></h6> 
+                        @if($eb->status == 1)
+                            <span class="label bg-light-blue">FREE</span>
+                        @else
+                            <span class="label  bg-orange">PREMIUM</span>
+                        @endif 
+                    </ul>
+                  </div>   
+        </center>       
              </div>
         </div>
      </div>
-    @endforeach
-                    {{-- Teknik Industri --}}
-                {{-- <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="card">
-                        <div class="header bg-green">
-                            <h2>
-                               Angular 2<small>Description text here..</small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-            <div class="body">
-                <img alt="300x200" src="{{ asset('img/book/javascript.jpg')}}" style="border: 1px solid #ddd;
-                   border-radius: 5px;
-                   padding: 5px;
-                   width: 100%;">     
-         <center><div class="header"> 
-                   <div class="flex">
-                    <ul class="list-inline count2">
-                        <li><center><h3><i class="material-icons">collections_bookmark</i></h3>
-                            <span>e-Book</span></center>
-                        </li> 
-                        <li><center><h3>T.IND</h3>
-                            <span>Jurusan</span></center>
-                        </li> 
-                        <li><center><h3><i class="material-icons">file_download</i></h3>
-                            <span>Dowload</span></center>
-                        </li>  
-                    </ul> 
-                    </div></center>
-                         <h5><strong> @Publisher </strong></h5>
-                            <span>Dedi Kurniawan</span> 
-             </div>
-        </div>
-     </div> --}}
-        {{-- Teknik Sipil--}}
-    {{--   <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="card">
-                        <div class="header bg-grey">
-                            <h2>
-                               Angular 2<small>Description text here..</small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-            <div class="body">
-                <img alt="300x200" src="{{ asset('img/book/laravel01.jpg')}}" style="border: 0.5px solid #ddd;
-                   border-radius: 5px;
-                   padding: 5px;
-                   width: 100%;">     
-         <center><div class="header"> 
-                   <div class="flex">
-                    <ul class="list-inline count2">
-                        <li><center><h3><i class="material-icons">collections_bookmark</i></h3>
-                            <span>e-Book</span></center>
-                        </li> 
-                        <li><center><h3>T.SIP</h3>
-                            <span>Jurusan</span></center>
-                        </li> 
-                        <li><center><h3><i class="material-icons">file_download</i></h3>
-                            <span>Dowload</span></center>
-                        </li>  
-                    </ul> 
-                    </div></center>
-                         <h5><strong> @Publisher </strong></h5>
-                            <span>Dedi Kurniawan</span> 
-             </div>
-        </div>
-     </div> --}}
-
+    @endforeach        
             </div>
-        </div>
+        </div><td colspan="3">{{ $books->links() }}</td>
     </section>
 
 

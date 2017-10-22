@@ -8,9 +8,11 @@
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "intervention/image": "^2.4",
+        "jrean/laravel-user-verification": "dev-master",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
+        "nicolaslopezj/searchable": "^1.9",
         "spatie/laravel-permission": "^2.7",
         "yajra/laravel-disqus": "^1.1"
     },

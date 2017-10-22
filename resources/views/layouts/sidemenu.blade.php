@@ -4,11 +4,13 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="{{ url('/home') }}">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
 
+
+                 @can('menu_ebook')
                        {{--  e-Book --}}
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -24,7 +26,7 @@
                               <ul class="ml-menu">
                                    @foreach( $fa->categories as $ka )
                                     <li>
-                                        <a href="{{ route ('ebook.edit',$fa->id) }}">
+                                        <a href="{{url('/kategory_ebook', $ka->id)}}">
                                             <span>{{ $ka->kategory }}</span>
                                         </a>
                                     </li>
@@ -41,47 +43,29 @@
                             <span>Video</span>
                         </a>
                         <ul class="ml-menu">
+                         @foreach($menuFakultas as $fa)
                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Teknik Informatika</span>
+                                <a href="#" class="menu-toggle">
+                                    <span>{{ $fa->jurusan }}</span>
                                 </a>
-                                <ul class="ml-menu">
+                              <ul class="ml-menu">
+                                   @foreach( $fa->categories as $ka )
                                     <li>
-                                        <a href="javascript:void(0);">
-                                            <span>Menu Item</span>
+                                        <a href="{{url('/kategory_video', $ka->id)}}">
+                                            <span>{{ $ka->kategory }}</span>
                                         </a>
                                     </li>
+                                    @endforeach 
                                 </ul>
-                            </li>
-                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Teknik Industry</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <span>Menu Item</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Teknik Sipil</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <span>Menu Item</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                            </li> 
+                         @endforeach                            
                         </ul>
+                    </li>
+                @endcan
 
-                        @role('author|admin')
-                    
-                        {{-- Tambah Data --}}
+
+                    @can('menu_administrasi')
+                    {{-- Tambah Data --}}
                     <li class="header">ADMINISTRASI</li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -90,25 +74,24 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="javascript:void(0);">
+                                <a href="{{ route ('book.create') }}">
                                 <i class="material-icons">collections_bookmark</i>
                                     <span>Tambah e-Book</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);">
+                                <a href="{{ route ('video.create') }}">
                                 <i class="material-icons">video_library</i>
                                     <span>Tambah Video</span>
                                 </a>
                             </li>
                         </ul>
                     </li>   
-                     @endrole
+                     @endcan
 
 
-                    
+                    @can('menu_pengaturan')
                     {{-- Hanya Admin --}}
-                   @role('Admin')
                      <li class="header">PENGATURAN</li>
                      <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -117,7 +100,7 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{ route ('profile.index') }}">
+                                <a href="{{ route ('user.index') }}">
                                 <i class="material-icons">group</i>
                                     <span>User</span>
                                 </a>
@@ -129,9 +112,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);">
+                                <a href="{{ route ('role.index') }}">
                                 <i class="material-icons">vpn_key</i>
-                                    <span>Admin</span>
+                                    <span>Role</span>
                                 </a>
                             </li>
                             
@@ -154,7 +137,7 @@
                         </a>
                     </li> 
                     </li>
-                    </li> @endrole
+                    </li>@endcan
                 </ul>
             </div>
             <!-- #Menu -->

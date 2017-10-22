@@ -13,6 +13,11 @@ class FacultyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('role:Admin');
+    }
+    
     public function index()
     {
         $faculty = Faculty::all();
@@ -73,10 +78,8 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-      $kategori = Category::all();
-      $faculty = Faculty::all();
       $jurusan = Faculty::find($id);
-      return view('module.faculty.edit', compact('kategori', 'faculty', 'jurusan'));
+      return view('module.faculty.edit', compact('jurusan'));
     }
 
     /**

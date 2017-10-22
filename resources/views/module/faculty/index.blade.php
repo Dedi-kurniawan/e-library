@@ -54,8 +54,8 @@
                                             <td>{{ $fa->jurusan }}</td>
                                              <td>
                                             {!! Form::open(['route' => ['faculty.destroy', $fa->id], 'method' => 'DELETE']) !!}
-                                            <a href=" {{ route ('faculty.edit',$fa->id) }}"><button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">list</i>
+                                            <a href=" {{ route ('faculty.edit',$fa->id) }}"><button type="button" class="btn bg-blue waves-effect">
+                                            <i class="material-icons">edit</i>
                                             </button></a>
                                             <button type="submit"  class="btn bg-red waves-effect" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Danger']);"><i class="material-icons">delete</i>
                                             </button>             

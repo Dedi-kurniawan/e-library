@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
-use App\Faculty;
 use App\Book;
-use App\User;
+
 
 class HomeController extends Controller
 {
@@ -28,24 +26,17 @@ class HomeController extends Controller
     public function index()
     {    
 
-        $ebook = Book::where('type', 1);
-        $ebookTotal = $ebook->count();
+        return view('home');
+    }
 
-        $video = Book::where('type', 2);
-        $videoTotal = $video->count();
+    public function Search(Request $request)
+    {
+        if($request->has('search')){
+            $books = Book::search($request->get('search'))->paginate(6);
+        }else{
+            $books = Book::paginate(6);
+        }
 
-        $anggota = User::all();
-        $anggotaTotal = $anggota->count();
-
-        $ebookPremium = Book::where('type', 1)->where('status', 2);
-        $ebookTotalPremium = $ebookPremium->count();
-
-        // $kategori = Category::all();
-        // $faculty  = Faculty::all();
-        // $book  = Book::all();
-
-        $book = Book::all();
-        //$menuFakultas = Faculty::with('categories')->get();
-        return view('home', compact('book', 'ebookTotal', 'videoTotal', 'anggotaTotal', 'ebookTotalPremium'));
+        return view('search', compact('books'));
     }
 }

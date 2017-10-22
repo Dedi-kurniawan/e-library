@@ -14,6 +14,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('role:Admin');
+    }
+    
     public function index()
     {
         $kategori = Category::all();

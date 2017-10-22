@@ -46,11 +46,10 @@
 	<div class="form-group form-float {!! $errors->has('type') ? 'has-error' : '' !!}">
 	<div class="form-line">
 		 {!! Form::label('type', 'Type') !!}
-		 {!! Form::text('type', null, ['class'=>'form-control', 'placeholder' => 'type']) !!}
+		 {!! Form::hidden('type',1, ['class'=>'form-control', 'placeholder' => 'type']) !!}
 		 {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
 </div>
 	</div>
-
 <div class="form-group form-float {!! $errors->has('file') ? 'has-error' : '' !!}">
 	<div class="form-line">
 		 {!! Form::label('file', 'E-book') !!}

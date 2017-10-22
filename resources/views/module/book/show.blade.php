@@ -64,6 +64,16 @@
                                         <input type="text" class="form-control" value="{{ $book->category->kategory}}" disabled>
                                     </div>
                                 </div>
+                                <label for="email_address">Status</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                    @if ($book->status == 1)
+                                        <input type="text" class="form-control" value="FREE" disabled>
+                                    @else
+                                     <input type="text" class="form-control" value="PREMIUM" disabled>
+                                    @endif
+                                    </div>
+                                </div>
                                 
                                 <br><a href="{{ url ('/book') }}">
                                 <button type="button" class="btn btn-primary m-t-15 waves-effect">BACK</button></a>
